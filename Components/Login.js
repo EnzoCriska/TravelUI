@@ -85,6 +85,41 @@ export default class Login extends Component {
                     })
     }
 
+    forgotPassword(){
+        console.log("forgot password press...")
+        if (this.state.email == ''){
+            Alert.alert(
+                'Sorry',
+                'please type your email to continue',
+                [
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ],
+                { cancelable: false }
+            )  
+        }else{
+            firebaseApp.auth().sendPasswordResetEmail(this.state.email)
+                .then(()=>{
+                    console.log('forgot...');
+                    Alert.alert(
+                        'Information',
+                        'Please check your email',
+                        [
+                        {text: 'OK', onPress: () => console.log('goto email')},
+                        ],
+                        { cancelable: false }
+                    );
+                    this.setState({
+                        email: '',
+                        password: ''
+                    });
+                })
+                .catch((error)=> {
+                    Alert.alert(error)
+                });
+        }
+        
+    }
+
 
     render() {
         return (
@@ -125,15 +160,17 @@ export default class Login extends Component {
                     </View>
                     <View style={{ paddingTop: 10, justifyContent: 'center', alignItems: 'center'}}>
                     <TouchableOpacity
-                        style={{backgroundColor: 'blue', padding: 5, borderRadius: 5}}
+                        style={{backgroundColor: 'blue', padding: 5, margin: 10, borderRadius: 5}}
                         onPress={this._fbAuth.bind(this)}
                         >
                             <Text style={{color: 'white'}}>
                             Continue with Facebook
                             </Text>
-                        </TouchableOpacity>   
+                        </TouchableOpacity>  
+                        <Text style={{color: 'white',}} onPress={() =>{this.forgotPassword()}}>
+                            Forgot password</Text> 
                     </View>
-                    
+                   
                     </View>
                     
                     

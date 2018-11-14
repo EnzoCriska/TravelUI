@@ -3,12 +3,23 @@ import {
     View, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Text, Image, Alert
 } from 'react-native';
 
-// import {firebaseApp} from '../Components/FirebaseConfig'
+import {firebaseApp} from '../Components/FirebaseConfig'
 
 export default class Register extends Component {
     constructor(props){
         super(props)
         
+    }
+
+    logout(){
+        firebaseApp.auth().signOut()
+            .then(() =>{
+                console.log('Logout...');
+                this.props.navigation.navigate('ScreenLogin');
+            })
+            .catch((error) =>{
+                Alert.alert(error);
+            })
     }
 
     render() {
@@ -18,6 +29,10 @@ export default class Register extends Component {
                     source={require('../Media/background2.jpg')}
                     style= {{flex:1}}>
                     <Text>Hello</Text>
+                    <TouchableOpacity style={{backgroundColor:'blue'}} onPress={()=>{this.logout()
+                    }}>
+                        <Text>Log out</Text>
+                    </TouchableOpacity>
                 </ImageBackground>
                     
             </View>
