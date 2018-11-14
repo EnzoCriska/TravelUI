@@ -3,7 +3,7 @@ import {
     View, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Text, Image, Alert, ActivityIndicator
 } from 'react-native';
 import {firebaseApp} from '../Components/FirebaseConfig'
-// import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk'
+import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk'
 
 export default class Login extends Component {
     isLogin = null;
@@ -54,35 +54,35 @@ export default class Login extends Component {
     }
 
     _fbAuth(){
-        // LoginManager.logInWithReadPermissions(['public_profile', 'email'])
-        //             .then((result) => {
-        //                 console.log('RESULT ' + result);
-        //                 if(result.isCancelled){
-        //                     return Promise.reject(new Error('the user cancle request'))
-        //                 }
-        //                 console.log('Login success: ' + result.grantedPermissions.toString())
-        //                 return AccessToken.getCurrentAccessToken();
-        //             })
-        //             .then((data) =>{    
-        //                 const firebase = require('firebase');
-        //                 const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-        //                 return firebase.auth().signInAndRetrieveDataWithCredential(credential);
-        //             })
-        //             .then((currentUser) =>{
-        //                 console.log(JSON.stringify(currentUser));
-        //                 this.props.navigation.navigate('ScreenHome');
+        LoginManager.logInWithReadPermissions(['public_profile', 'email'])
+                    .then((result) => {
+                        console.log('RESULT ' + result);
+                        if(result.isCancelled){
+                            return Promise.reject(new Error('the user cancle request'))
+                        }
+                        console.log('Login success: ' + result.grantedPermissions.toString())
+                        return AccessToken.getCurrentAccessToken();
+                    })
+                    .then((data) =>{    
+                        const firebase = require('firebase');
+                        const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+                        return firebase.auth().signInAndRetrieveDataWithCredential(credential);
+                    })
+                    .then((currentUser) =>{
+                        console.log(JSON.stringify(currentUser));
+                        this.props.navigation.navigate('ScreenHome');
 
-        //             }).catch((error) => {
-        //                 console.log('ERROR '+  error);
-        //                 Alert.alert(
-        //                     'Sorry',
-        //                     '' + error,
-        //                     [
-        //                     {text: 'OK', onPress: () => console.log('OK Pressed')},
-        //                     ],
-        //                     { cancelable: false }
-        //                 )
-        //             })
+                    }).catch((error) => {
+                        console.log('ERROR '+  error);
+                        Alert.alert(
+                            'Sorry',
+                            '' + error,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            { cancelable: false }
+                        )
+                    })
     }
 
 
