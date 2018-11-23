@@ -125,7 +125,7 @@ export default class Login extends Component {
         return (
             <View style={login.background}>
                 <ImageBackground
-                    source={require('../Media/background2.jpg')}
+                    source={require('../Media/dk.png')}
                     style= {{flex:1}}>
                     <View style={{flex:2,justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={require('../Media/logo.png')}
