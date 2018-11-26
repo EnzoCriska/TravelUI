@@ -5,6 +5,7 @@ import Register from '../Components/Register';
 import Home from '../Components/Home';
 import Loading from '../Components/Loading';
 import StartScreen from "../Components/StartScreen";
+import SignUpScreen from '../Components/SignUpScreen';
 
 export const HomeStack = StackNavigator({
     ScreenLoading:{
@@ -14,6 +15,10 @@ export const HomeStack = StackNavigator({
     ScreenStart:{
         screen: StartScreen,
         navigationOptions: {header:null}    
+    },
+    ScreenSignUp:{
+        screen: SignUpScreen,
+        navigationOptions: {header: null}
     },
     ScreenLogin:{
         screen: Login,
