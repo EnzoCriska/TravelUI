@@ -3,7 +3,9 @@ import {
     View, StyleSheet, Text, TextInput, TouchableHighlight, Image, Alert, ImageBackground, ScrollView
 } from 'react-native'
 import {firebaseApp} from '../Components/FirebaseConfig'
+import { Dimensions } from 'react-native'
 
+const window = Dimensions.get('window')
 export default class SignUpScreen extends Component {
     constructor(props){
         super(props)
@@ -14,6 +16,7 @@ export default class SignUpScreen extends Component {
         }
     }
 
+ 
 
     onSignUp(){
         console.log(this.state)
@@ -65,7 +68,7 @@ export default class SignUpScreen extends Component {
     render() {
         return (
             <ScrollView style = {Styles.container}>
-                <View style= {{height: 176, backgroundColor: '#A80C9F'}}>
+                <View style= {{height: window.height/4, backgroundColor: '#A80C9F'}}>
                 <ImageBackground
                         source={require('../Media/bg-signup.png')}
                         style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
@@ -75,8 +78,8 @@ export default class SignUpScreen extends Component {
                     />
                     </ImageBackground>
                 </View>
-                <View style = {{height:491, backgroundColor:'white', alignItems: 'center'}}>
-                    <View style = {{height:450, backgroundColor:'white', marginTop: -30, width: 391, borderRadius: 20, borderColor: 'grey', borderWidth: 0.5}}>
+                <View style = {{height:3*(window.height/4), backgroundColor:'white', alignItems: 'center'}}>
+                    <View style = {{height:450, backgroundColor:'white', marginTop: -30, width: window.width-20, borderRadius: 20, borderColor: 'grey', borderWidth: 0.5}}>
                         <View style={{margin: 25}}>
                             <Text>User name</Text>
                             <TextInput

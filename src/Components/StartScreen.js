@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Text, ActivityIndicator, StyleSheet, ImageBackground, TouchableOpacity, Image, Alert } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet, ImageBackground, TouchableOpacity, Image, Alert, ScrollView } from 'react-native'
 import {firebaseApp} from './FirebaseConfig'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk'
+
 
 export default class StartScreen extends React.Component {
   
