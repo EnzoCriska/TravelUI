@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, StyleSheet, Text, TextInput, TouchableHighlight, Image, Alert
+    View, StyleSheet, Text, TextInput, TouchableHighlight, Image, Alert, ImageBackground    
 } from 'react-native'
 import {firebaseApp} from '../Components/FirebaseConfig'
 
@@ -15,7 +15,7 @@ export default class SignUpScreen extends Component {
     }
 
 
-    onSignIn(){
+    onSignUp(){
         console.log(this.state)
         if(this.state.password != this.state.repass){
             Alert.alert('Sorry!', 'please type your password and re pass',
@@ -65,11 +65,15 @@ export default class SignUpScreen extends Component {
     render() {
         return (
             <View style = {Styles.container}>
-                <View style= {{height: 176, backgroundColor: '#A80C9F', alignItems: 'center', justifyContent: 'center'}}>
-                    <Image
+                <View style= {{height: 176, backgroundColor: '#A80C9F'}}>
+                <ImageBackground
+                        source={require('../Media/bg-signup.png')}
+                        style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
+                        <Image
                         source={require('../Media/Group1916.png')}
                         style = {{width:200, height:70}}
                     />
+                    </ImageBackground>
                 </View>
                 <View style = {{height:491, backgroundColor:'white', alignItems: 'center'}}>
                     <View style = {{height:450, backgroundColor:'white', marginTop: -30, width: 391, borderRadius: 20, borderColor: 'grey', borderWidth: 0.5}}>
@@ -105,7 +109,7 @@ export default class SignUpScreen extends Component {
                             />
                         </View>                        
                     </View>
-                    <TouchableHighlight  style={Styles.button} onPress={this.onSignIn.bind(this)}>
+                    <TouchableHighlight  style={Styles.button} onPress={this.onSignUp.bind(this)}>
                             <View >
                                 <Text style={{color:'white'}}>SIGN UP</Text>
                             </View>

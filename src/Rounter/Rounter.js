@@ -6,6 +6,7 @@ import Home from '../Components/Home';
 import Loading from '../Components/Loading';
 import StartScreen from "../Components/StartScreen";
 import SignUpScreen from '../Components/SignUpScreen';
+import SignInScreen from '../Components/SignInScreen';
 
 export const HomeStack = StackNavigator({
     ScreenLoading:{
@@ -20,14 +21,18 @@ export const HomeStack = StackNavigator({
         screen: SignUpScreen,
         navigationOptions: {header: null}
     },
-    ScreenLogin:{
-        screen: Login,
-        navigationOptions: { header: null } 
+    ScreenSignIn:{
+        screen: SignInScreen,
+        navigationOptions:{header:null}
     },
-    ScreenRegister: {
-        screen: Register,
-        navigationOptions: { header: null } 
-    },
+    // ScreenLogin:{
+    //     screen: Login,
+    //     navigationOptions: { header: null } 
+    // },
+    // ScreenRegister: {
+    //     screen: Register,
+    //     navigationOptions: { header: null } 
+    // },
     ScreenHome: {
         screen: Home,
         navigationOptions: { header: null } 

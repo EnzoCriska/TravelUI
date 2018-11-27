@@ -50,6 +50,7 @@ export default class StartScreen extends React.Component {
   
   onLoginSc(){
     console.log('Login btn text click...')
+    this.props.navigation.navigate('ScreenSignIn');
   }
 render() {
     return (

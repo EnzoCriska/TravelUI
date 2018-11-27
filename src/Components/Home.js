@@ -15,7 +15,7 @@ export default class Register extends Component {
         firebaseApp.auth().signOut()
             .then(() =>{
                 console.log('Logout...');
-                this.props.navigation.navigate('ScreenLogin');
+                this.props.navigation.navigate('ScreenStart');
             })
             .catch((error) =>{
                 Alert.alert(error);
