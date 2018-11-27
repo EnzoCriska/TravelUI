@@ -50,6 +50,37 @@ export default class SignInScreen extends Component {
 
     forgotPassword(){
         console.log('forget password')
+        console.log("forgot password press...")
+        if (this.state.email == ''){
+            Alert.alert(
+                'Sorry',
+                'please type your email to continue',
+                [
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ],
+                { cancelable: false }
+            )  
+        }else{
+            firebaseApp.auth().sendPasswordResetEmail(this.state.email)
+                .then(()=>{
+                    console.log('forgot...');
+                    Alert.alert(
+                        'Information',
+                        'Please check your email',
+                        [
+                        {text: 'OK', onPress: () => console.log('goto email')},
+                        ],
+                        { cancelable: false }
+                    );
+                    this.setState({
+                        email: '',
+                        password: ''
+                    });
+                })
+                .catch((error)=> {
+                    Alert.alert(error)
+                });
+        }
     }
 
     render() {
