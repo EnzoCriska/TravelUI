@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, StyleSheet, Text, TextInput, TouchableHighlight, Image, Alert, ImageBackground
+    View, StyleSheet, Text, TextInput, TouchableHighlight, Image, Alert, ImageBackground, ScrollView
 } from 'react-native'
 import {firebaseApp} from '../Components/FirebaseConfig'
 
@@ -54,7 +54,7 @@ export default class SignInScreen extends Component {
 
     render() {
         return (
-            <View style = {Styles.container}>
+            <ScrollView style = {Styles.container}>
                 <View style= {{height: 176}}>
                 <ImageBackground
                         source={require('../Media/bg-signup.png')}
@@ -107,10 +107,9 @@ export default class SignInScreen extends Component {
                         
                     </View>
                     
-                    
                 </View>
                 
-            </View>
+            </ScrollView>
         );
     }
 }
