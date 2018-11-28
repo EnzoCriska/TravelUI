@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ActivityIndicator, StyleSheet, ImageBackground, TouchableOpacity, Image, Alert, ScrollView } from 'react-native'
-import {firebaseApp} from './FirebaseConfig'
+import {firebaseApp} from '../config/FirebaseConfig'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk'
 
@@ -26,7 +26,7 @@ export default class StartScreen extends React.Component {
                     .then((currentUser) =>{
                         console.log(JSON.stringify(currentUser));
                         this.props.navigation.navigate('ScreenHome');
-                    })
+    state = {  }                    })
                     .catch((error) => {
                         console.log('ERROR '+  error);
                         Alert.alert(
@@ -58,11 +58,11 @@ render() {
       <View style={styles.container}>
         
         <ImageBackground
-            source = {require('../Media/dk.png')}
+            source = {require('../../Media/dk.png')}
             style = {{flex:1, justifyContent:'center', alignItems:'center'}}>
             <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
               <Image
-                source={require('../Media/Group1916.png')}
+                source={require('../../Media/Group1916.png')}
                 style={{width:220, height:100}}
               />
               <Text style={{color:'white'}}>Travel with people, Make new friends</Text>
@@ -92,7 +92,7 @@ render() {
                 <View style = {{flex:1, flexDirection: 'row', backgroundColor : '#FFFFFF', borderRadius: 50,}}>
                       <View style={{flex:1, alignItems:'center', justifyContent:'center',}}>
                         <Image
-                          source={require('../Media/ic_google.png')}
+                          source={require('../../Media/ic_google.png')}
                           style={{width:25, height:25}}
                           
                         />

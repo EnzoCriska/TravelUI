@@ -1,17 +1,16 @@
 import React from 'react';
-import  { StackNavigator }  from 'react-navigation'
-import Login from '../Components/Login';
-import Register from '../Components/Register';
-import Home from '../Components/Home';
-import Loading from '../Components/Loading';
-import StartScreen from "../Components/StartScreen";
-import SignUpScreen from '../Components/SignUpScreen';
-import SignInScreen from '../Components/SignInScreen';
+import { Text } from "react-native";
+import  { StackNavigator, createBottomTabNavigator }  from 'react-navigation'
+import HomeScreen from '../Components/UI/HomeScreen';
+import Loading from '../Components/UI/Loading';
+import StartScreen from "../Components/UI/StartScreen";
+import SignUpScreen from '../Components/UI/SignUpScreen';
+import SignInScreen from '../Components/UI/SignInScreen';
 
-export const HomeStack = StackNavigator({
+export const HomeStack = createBottomTabNavigator({
     ScreenLoading:{
         screen: Loading,
-        navigationOptions: { header: null}
+        navigationOptions: { header: null, bottomTab: null}
     },
     ScreenStart:{
         screen: StartScreen,
@@ -25,19 +24,10 @@ export const HomeStack = StackNavigator({
         screen: SignInScreen,
         navigationOptions:{header:null}
     },
-    // ScreenLogin:{
-    //     screen: Login,
-    //     navigationOptions: { header: null } 
-    // },
-    // ScreenRegister: {
-    //     screen: Register,
-    //     navigationOptions: { header: null } 
-    // },
     ScreenHome: {
-        screen: Home,
-        navigationOptions: { header: null } 
+        screen: HomeScreen,
+        navigationOptions:{header:null}
     },
 },
 { 
-    headerMode: 'screen' 
-  })
+    headerMode: 'screen' })

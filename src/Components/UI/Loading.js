@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ActivityIndicator, StyleSheet, ImageBackground } from 'react-native'
-import {firebaseApp} from '../Components/FirebaseConfig'
+import {firebaseApp} from '../config/FirebaseConfig'
 
 export default class Loading extends React.Component {
 
@@ -12,9 +12,9 @@ export default class Loading extends React.Component {
         
   render() {
     return (
-      <View ScreenStartstyle={styles.container}>
+      <View style={styles.container}>
         <ImageBackground
-          source={require('../Media/dk.png')}
+          source={require('../../Media/dk.png')}
           style= {{flex:1, justifyContent: 'center', alignItems: 'center',}}>
             <Text style={{fontSize: 30, fontStyle: "italic", color: 'white', padding: 20}}>Loading</Text>
             <ActivityIndicator size="large" />

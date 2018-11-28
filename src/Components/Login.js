@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { 
     View, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Text, Image, Alert, ActivityIndicator
 } from 'react-native';
-import {firebaseApp} from '../Components/FirebaseConfig'
+import {firebaseApp} from './config/FirebaseConfig'
 import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk'
 
 export default class Login extends Component {

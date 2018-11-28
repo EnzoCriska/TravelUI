@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import {
     View, StyleSheet, Text, TextInput, TouchableHighlight, Image, Alert, ImageBackground, ScrollView
 } from 'react-native'
-import {firebaseApp} from '../Components/FirebaseConfig'
+import {firebaseApp} from '../config/FirebaseConfig'
+import { Dimensions } from 'react-native'
 
+const window = Dimensions.get('window')
 export default class SignInScreen extends Component {
     constructor(props){
         super(props)
@@ -50,7 +52,7 @@ export default class SignInScreen extends Component {
 
     forgotPassword(){
         console.log('forget password')
-        console.log("forgot password press...")
+        console.log("forgot password press..." + this.state.email)
         if (this.state.email == ''){
             Alert.alert(
                 'Sorry',
@@ -59,7 +61,7 @@ export default class SignInScreen extends Component {
                 {text: 'OK', onPress: () => console.log('OK Pressed')},
                 ],
                 { cancelable: false }
-            )  
+            )
         }else{
             firebaseApp.auth().sendPasswordResetEmail(this.state.email)
                 .then(()=>{
@@ -86,18 +88,18 @@ export default class SignInScreen extends Component {
     render() {
         return (
             <ScrollView style = {Styles.container}>
-                <View style= {{height: 176}}>
+                <View style= {{height: window.height/4}}>
                 <ImageBackground
-                        source={require('../Media/bg-signup.png')}
+                        source={require('../../Media/bg-signup.png')}
                         style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                        source={require('../Media/Group1916.png')}
-                        style = {{width:200, height:70}}
+                        source={require('../../Media/Group1916.png')}
+                        style = {{width:200, height:70, paddingBottom:30}}
                     />
                 </ImageBackground>
                     
                 </View>
-                <View style = {{height:491, backgroundColor:'white', alignItems: 'center'}}>
+                <View style = {{height:3*(window.height/4), backgroundColor:'grey', alignItems: 'center'}}>
                     <View style = {{height:450, backgroundColor:'white', marginTop: -30, width: 391, borderRadius: 20, borderColor: 'grey', borderWidth: 0.5}}>
                         <View style={{margin: 25}}>
                             <Text>User name</Text>
