@@ -11,23 +11,27 @@ import ItemList from './FlatListItem/ItemList';
 import ItemTrendLocation from './FlatListItem/ItemTrendLocation'
 import { Dimensions } from 'react-native'
 import {isUndefined} from 'react-native-util';
+import ItemPromotion from './FlatListItem/ItemPromotion';
 
 const window = Dimensions.get('window');
 const datasourcePromotion = [
     {
         title: 'Ha Giang',
         image: 'https://triphunter.vn/media/W1siZiIsIjIwMTgvMDkvMjcvMjhheGlteGxrb19IYUdpYW5nX29wdGltaXplLmpwZyJdLFsicCIsInRodW1iIiwiNjQweDQ4MCMiXV0/Cho-tinh-khau-vai-ha-giang-mytour-1.jpg?sha=cca8f02c3fdadb82',
-        rating: 4.5
+        rating: 4.5,
+        promotion: 80
     },
     {
          title: 'Cao Bằng',
          image: 'https://triphunter.vn/media/W1siZiIsIjIwMTgvMTEvMDEvN2t2ZnY2bWNoNl9naW9pX3RoaWV1X21vY19jaGF1X1RyaXBIdW50ZXIuanBnIl0sWyJwIiwidGh1bWIiLCI2NDB4NDgwIyJdXQ/Moc-Chau-TripHunter-1.jpg?sha=e3c235622d861419',
-         rating: 4
+         rating: 4,
+         promotion:75
      },
      {
          title: 'Bắc Cạn',
          image: 'https://triphunter.vn/media/W1siZiIsIjIwMTgvMDQvMTAvN3dob3ZkaWNxeF9odWUuanBnIl0sWyJwIiwidGh1bWIiLCI2NDB4NDgwIyJdXQ/hue.jpg?sha=da56de6061471ded',
-         rating: 3
+         rating: 3,
+         promotion:60
      }
 ]
 const datasourceLocationTrend = [
@@ -114,7 +118,7 @@ export default class HomeScreen extends Component {
                 {/* Group button on Home */}
                 <View style={{alignItem: 'center',  justifyContent: 'center', width:'100%', flexDirection:'row', marginTop:-30, }}>
                                 <TouchableOpacity style={styles.homeButton}>
-                                    <View style={{borderRadius:10,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
+                                    <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/Group4101.png')}
                                             style={styles.icButtonHome}
@@ -124,7 +128,7 @@ export default class HomeScreen extends Component {
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.homeButton}>
-                                    <View style={{borderRadius:10,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
+                                    <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/sleeping-in-bed.png')}
                                             style={styles.icButtonHome}
@@ -134,7 +138,7 @@ export default class HomeScreen extends Component {
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.homeButton}>
-                                    <View style={{borderRadius:10,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
+                                    <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/airplane.png')}
                                             style={styles.icButtonHome}
@@ -144,7 +148,7 @@ export default class HomeScreen extends Component {
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.homeButton}>
-                                    <View style={{borderRadius:10,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
+                                    <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/Group4163.png')}
                                             style={styles.icButtonHome}
@@ -154,7 +158,7 @@ export default class HomeScreen extends Component {
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.homeButton}>
-                                    <View style={{borderRadius:10,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
+                                    <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/bus.png')}
                                             style={styles.icButtonHome}
@@ -234,23 +238,34 @@ export default class HomeScreen extends Component {
     }
 
     renderRow({item}){
-        console.log(isUndefined(item.rating ))
-        if(isUndefined(item.rating)){
+        if(!isUndefined(item.promotion)){
             return(
-                <ItemTrendLocation
+                <ItemPromotion
                     image = {item.image}
                     title = {item.title}
+                    promotion = {item.promotion}
                 />
             )
         }else{
-            return(
-                <ItemList
-                    image = {item.image}
-                    title = {item.title}
-                    rating = {item.rating}
-                />
-            )
+            // console.log(isUndefined(item.rating ))
+            if(isUndefined(item.rating)){
+                return(
+                    <ItemTrendLocation
+                        image = {item.image}
+                        title = {item.title}
+                    />
+                )
+            }else{
+                return(
+                    <ItemList
+                        image = {item.image}
+                        title = {item.title}
+                        rating = {item.rating}
+                    />
+                )
+            }
         }
+        
         
     }
 }

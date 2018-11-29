@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import { 
-    View, Image, Text
+    View, ImageBackground, Text
  } from "react-native";
 import {Rating} from 'react-native-elements'
 
 
 
- export default class ItemList extends Component {
+ export default class ItemPromotion extends Component {
     constructor(props){
         super(props)
     //    this.item = this.props.item
@@ -19,10 +19,16 @@ import {Rating} from 'react-native-elements'
      render() {
          return (
              <View style = {{marginLeft:5}}>
-                 <Image
+                 <ImageBackground
                     source={{uri: this.props.image}}
-                    style={{height:150, width:200, borderRadius:10}}>
-                 </Image>
+                    style={{height:150, width:200, borderRadius:10, alignItems:'flex-end'}}>
+                    <ImageBackground
+                        source={require('../../../Media/promotion.png')}
+                        style={{height:50, width:50, alignItems:'center'}}>
+                        <Text style={{color:'white', fontWeight:'bold', fontSize:15}}>{this.props.promotion} %</Text>
+                    </ImageBackground>
+                    
+                 </ImageBackground>
                  <View style={{flexDirection:'column', marginVertical:10, alignItems:'flex-start', justifyContent:'space-between'}}>
                     <Text style={{fontSize:16}}>{this.props.title}</Text>
                     <View style={{flexDirection:'row'}}>
