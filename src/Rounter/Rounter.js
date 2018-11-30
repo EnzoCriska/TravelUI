@@ -6,7 +6,10 @@ import Loading from '../Components/UI/Loading';
 import StartScreen from "../Components/UI/StartScreen";
 import SignUpScreen from '../Components/UI/SignUpScreen';
 import SignInScreen from '../Components/UI/SignInScreen';
+import SearchScreen from '../Components/UI/SearchScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import PopularDestinations from '../Components/UI/PopularDestinations';
+import FindHotelScreen from '../Components/UI/FindHotelScreen';
 
 const HomeStack = StackNavigator({
     ScreenLoading:{
@@ -29,11 +32,25 @@ const HomeStack = StackNavigator({
         screen: HomeScreen,
         navigationOptions:{header:null}
     },
+    ScreenSearch:{
+        screen: SearchScreen,
+        navigationOptions:{header:null}
+    },
+    ScreenPopularDestinations:{
+        screen: PopularDestinations,
+        navigationOptions: {header:null}
+    },
+    ScreenFindHotel:{
+        screen: FindHotelScreen,
+        navigationOptions: {header:null}
+    }
 },
 { 
     headerMode: 'screen' })
 
-    HomeStack.navigationOptions = ({ navigation }) => {
+
+
+HomeStack.navigationOptions = ({ navigation }) => {
         let tabBarVisible = false;
         let state = navigation.state;
         let routes = state.routes;

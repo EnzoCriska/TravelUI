@@ -21,7 +21,8 @@ import {Rating} from 'react-native-elements'
              <View style = {{marginLeft:5}}>
                  <ImageBackground
                     source={{uri: this.props.image}}
-                    style={{height:150, width:200, borderRadius:10, alignItems:'flex-end'}}>
+                    style={{height:150, width:200, alignItems:'flex-end'}}
+                    imageStyle={{ borderRadius: 10 }}>
                     <ImageBackground
                         source={require('../../../Media/promotion.png')}
                         style={{height:50, width:50, alignItems:'center'}}>

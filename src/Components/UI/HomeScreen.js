@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { 
-    View, ScrollView, StyleSheet, ImageBackground, 
-    ToolbarAndroid, Text, StatusBar, TextInput, TouchableOpacity,
-    Image, FlatList,
-    ListView
+    View, ScrollView, StyleSheet, ImageBackground, Text, StatusBar, TextInput, TouchableOpacity,
+    Image, FlatList, Dimensions 
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import  {Input, Header}  from 'react-native-elements';
 import ItemList from './FlatListItem/ItemList';
 import ItemTrendLocation from './FlatListItem/ItemTrendLocation'
-import { Dimensions } from 'react-native'
 import {isUndefined} from 'react-native-util';
 import ItemPromotion from './FlatListItem/ItemPromotion';
 
@@ -37,15 +33,18 @@ const datasourcePromotion = [
 const datasourceLocationTrend = [
     {
         image: 'https://mochilerosentailandia.com/wp-content/uploads/2016/07/Halong-Bay.jpg',
-        title: 'Hạ Long'
+        title: 'Hạ Long',
+        description: 'Hon Ngoc'
     },
     {
         image: 'https://triphunter.vn/media/W1siZiIsIjIwMTYvMDMvMDUvMmp1dmg0dGljOV8xMjU5MjIyN18xMDE2NTE5MTc1MDU2MjQzXzU4MTU2MDUzNTc3NDIxMzQ0NzNfbi5qcGciXSxbInAiLCJ0aHVtYiIsIjY0MHg0ODBcdTAwM2UiXV0/12592227_1016519175056243_5815605357742134473_n.jpg?sha=c82aa868012d0f4a',
-        title: 'Da Nang'
+        title: 'Da Nang',
+        description: 'Bien hat'
     },
     {
         image: 'https://triphunter.vn/media/W1siZiIsIjIwMTYvMDMvMDUvMmp1dmg0dGljOV8xMjU5MjIyN18xMDE2NTE5MTc1MDU2MjQzXzU4MTU2MDUzNTc3NDIxMzQ0NzNfbi5qcGciXSxbInAiLCJ0aHVtYiIsIjY0MHg0ODBcdTAwM2UiXV0/12592227_1016519175056243_5815605357742134473_n.jpg?sha=c82aa868012d0f4a',
-        title: 'Hoi An'
+        title: 'Hoi An',
+        descripstion:'Ngay xua cu'
     }
 ]
 const datasourceNearLocation = [
@@ -82,13 +81,13 @@ export default class HomeScreen extends Component {
                     <ImageBackground
                         source={require('../../Media/bg-signup.png')}
                         style={{flex:1, width: '100%', borderRadius: 10, alignItems:'center'}}>
-                            <View style={{flex:2,  alignItem: 'center',  justifyContent: 'center', width:'100%', flexDirection:'row'}}>
+                            <View style={{flex:2,  alignItem: 'flex-end',  justifyContent: 'center', width:'100%', flexDirection:'row'}}>
  
-                                <View style={{flex:10, alignItems:'center', justifyContent:'center'}}>
+                                <View style={{flex:10, alignItems:'center', justifyContent:'flex-end'}}>
                                     <Text style={{fontSize:20, color: 'white'}}>TravelUi</Text>
                                 </View>
                                 
-                                <View style={{flex:1, justifyContent: 'center',}}>
+                                <View style={{flex:1, alignItems: 'flex-end',justifyContent: 'flex-end',}}>
                                     <Icon
                                         name='bell-o'
                                         size={20}
@@ -97,17 +96,20 @@ export default class HomeScreen extends Component {
                                 </View>
                                 
                             </View>
-                            <View style={{flex:1,  alignItem: 'center',  justifyContent: 'center', width:'100%', flexDirection:'row'}}>
-                                <TextInput
-                                    style={{flex:1, height: 40, backgroundColor:'white', marginLeft:50, marginRight:50, borderRadius:10}}
-                                    rightIcon={
-                                        <Icon
+                            <View style={{flex:1,  alignItem: 'flex-end',  justifyContent: 'center', width:'100%', flexDirection:'row', marginTop: 20}}>
+                                <TouchableOpacity 
+                                    onPress={()=>{
+                                        console.log("dungtt".length);
+                                        this.props.navigation.navigate('ScreenSearch')}}
+                                    style={{flex:1, flexDirection:'row', paddingHorizontal:10, height: 35, backgroundColor:'white', marginLeft:50, marginRight:50, borderRadius:10, alignItems:'center', justifyContent:'space-between'}}>
+                                    <Text style={{color:'grey'}}>Find Destination, hotel, restaurants...</Text>
+                                    <Icon
                                             name='search'
                                             size={20}
-                                            color='pink'
+                                            color='#ED50C6'
                                         />
-                                    }
-                                />
+                                </TouchableOpacity>
+                
                             </View>
                             <View style={{flex:2}}></View>
 
@@ -120,17 +122,17 @@ export default class HomeScreen extends Component {
                                 <TouchableOpacity style={styles.homeButton}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
-                                            source={require('../../Media/Group4101.png')}
+                                            source={require('../../Media/HomeButton/Group4101.png')}
                                             style={styles.icButtonHome}
                                         />
                                         <Text style={styles.textButton}>Trips plan</Text>
                                     </View>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.homeButton}>
+                                <TouchableOpacity style={styles.homeButton} onPress= {()=> {this.props.navigation.navigate('ScreenFindHotel')}}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
-                                            source={require('../../Media/sleeping-in-bed.png')}
+                                            source={require('../../Media/HomeButton/sleeping-in-bed.png')}
                                             style={styles.icButtonHome}
                                         />
                                         <Text style={styles.textButton}>Hotels</Text>
@@ -140,7 +142,7 @@ export default class HomeScreen extends Component {
                                 <TouchableOpacity style={styles.homeButton}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
-                                            source={require('../../Media/airplane.png')}
+                                            source={require('../../Media/HomeButton/airplane.png')}
                                             style={styles.icButtonHome}
                                         />
                                         <Text style={styles.textButton}>Flights</Text>
@@ -150,7 +152,7 @@ export default class HomeScreen extends Component {
                                 <TouchableOpacity style={styles.homeButton}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
-                                            source={require('../../Media/Group4163.png')}
+                                            source={require('../../Media/HomeButton/Group4163.png')}
                                             style={styles.icButtonHome}
                                         />
                                         <Text style={styles.textButton}>Restaurants</Text>
@@ -160,7 +162,7 @@ export default class HomeScreen extends Component {
                                 <TouchableOpacity style={styles.homeButton}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
-                                            source={require('../../Media/bus.png')}
+                                            source={require('../../Media/HomeButton/bus.png')}
                                             style={styles.icButtonHome}
                                         />
                                         <Text style={styles.textButton}>Tours</Text>
@@ -171,7 +173,7 @@ export default class HomeScreen extends Component {
                             </View>
                 
                 {/* promotion news */}
-                <View>
+                <View style={{margin: 10}}>
                     <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between', alignItems:'flex-end', margin: 10}}>
                             <Text style={{fontWeight:'bold', fontSize:20}}>Tin khuyến mãi</Text>
                             <Text 
@@ -187,11 +189,14 @@ export default class HomeScreen extends Component {
                 </View>
                 
                 {/* Điểm đến phổ biến */}
-                <View>
+                <View style={{margin: 10}}>
                     <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between', alignItems:'flex-end', margin: 10}}>
                             <Text style={{fontWeight:'bold', fontSize:20}}>Điểm đến phổ biến</Text>
                             <Text 
-                                style= {{color:'#ED50C6'}} onPress={()=>{console.log('press see all promotion...')}}>See all</Text>
+                                style= {{color:'#ED50C6'}} 
+                                onPress={()=>{
+                                        console.log('press see all popularDestinations...')
+                                        this.props.navigation.navigate('ScreenPopularDestinations')}}>See all</Text>
                     </View>
                     <FlatList
                         horizontal={true}
@@ -203,7 +208,7 @@ export default class HomeScreen extends Component {
                 </View>
                 
                 {/* Địa điểm gần bạn */}
-                <View>
+                <View style={{margin: 10}}>
                     <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between', alignItems:'flex-end', margin: 10}}>
                             <Text style={{fontWeight:'bold', fontSize:20}}>Điểm đến gần bạn</Text>
                             <Text 
@@ -219,7 +224,7 @@ export default class HomeScreen extends Component {
                 </View>
                 
                 {/* Tháng này đi đâu */}
-                <View>
+                <View style={{margin: 10}}>
                     <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between', alignItems:'flex-end', margin: 10}}>
                             <Text style={{fontWeight:'bold', fontSize:20}}>Tháng này nên đi đâu</Text>
                             <Text 
