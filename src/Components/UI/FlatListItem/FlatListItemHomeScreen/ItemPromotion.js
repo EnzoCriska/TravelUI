@@ -18,13 +18,13 @@ import {Rating} from 'react-native-elements'
 
      render() {
          return (
-             <View style = {{marginLeft:5}}>
+             <View style = {{marginLeft:5, width:200}}>
                  <ImageBackground
                     source={{uri: this.props.image}}
                     style={{height:150, width:200, alignItems:'flex-end'}}
                     imageStyle={{ borderRadius: 10 }}>
                     <ImageBackground
-                        source={require('../../../Media/promotion.png')}
+                        source={require('../../../../Media/promotion.png')}
                         style={{height:50, width:50, alignItems:'center'}}>
                         <Text style={{color:'white', fontWeight:'bold', fontSize:15}}>{this.props.promotion} %</Text>
                     </ImageBackground>

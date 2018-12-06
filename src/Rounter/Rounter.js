@@ -3,13 +3,22 @@ import { Text, Image } from "react-native";
 import  { StackNavigator, createBottomTabNavigator, createAppContainer }  from 'react-navigation'
 import HomeScreen from '../Components/UI/HomeScreen';
 import Loading from '../Components/UI/Loading';
+
 import StartScreen from "../Components/UI/StartScreen";
+
 import SignUpScreen from '../Components/UI/SignUpScreen';
 import SignInScreen from '../Components/UI/SignInScreen';
+
 import SearchScreen from '../Components/UI/SearchScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import PopularDestinations from '../Components/UI/PopularDestinations';
-import FindHotelScreen from '../Components/UI/FindHotelScreen';
+
+import FindHotelScreen from '../Components/UI/FindingScreen/FindHotelScreen';
+import FindRestaurantScreen from '../Components/UI/FindingScreen/FindRestaurantScreen';
+import FindToursScreen from '../Components/UI/FindingScreen/FindToursScreen';
+
+import CreatePlanScreen from '../Components/UI/CreateTripPlan/CreatePlanScreen';
+
 
 const HomeStack = StackNavigator({
     ScreenLoading:{
@@ -43,6 +52,14 @@ const HomeStack = StackNavigator({
     ScreenFindHotel:{
         screen: FindHotelScreen,
         navigationOptions: {header:null}
+    },
+    ScreenFindRestaurants:{
+        screen: FindRestaurantScreen,
+        navigationOptions:{header: null}
+    },
+    ScreenFindTours:{
+        screen: FindToursScreen,
+        navigationOptions:{header: null}
     }
 },
 { 
@@ -70,11 +87,16 @@ const PlanStack = StackNavigator({
 })
 
 const CreateStack = StackNavigator({
-    ScreenHome: {
-        screen: HomeScreen,
+    ScreenCreat: {
+        screen: CreatePlanScreen,
         navigationOptions:{header:null}
     },
 })
+
+CreateStack.navigationOptions = ({navigation}) => {
+    let tabBarVisible = false
+    return {tabBarVisible,};
+}
 
 const TripsStack = StackNavigator({
     ScreenHome: {

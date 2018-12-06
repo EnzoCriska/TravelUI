@@ -4,10 +4,10 @@ import {
     Image, FlatList, Dimensions 
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import ItemList from './FlatListItem/ItemList';
-import ItemTrendLocation from './FlatListItem/ItemTrendLocation'
+import ItemList from './FlatListItem/FlatListItemHomeScreen/ItemList';
+import ItemTrendLocation from './FlatListItem/FlatListItemHomeScreen/ItemTrendLocation'
 import {isUndefined} from 'react-native-util';
-import ItemPromotion from './FlatListItem/ItemPromotion';
+import ItemPromotion from './FlatListItem/FlatListItemHomeScreen/ItemPromotion';
 
 const window = Dimensions.get('window');
 const datasourcePromotion = [
@@ -149,7 +149,7 @@ export default class HomeScreen extends Component {
                                     </View>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.homeButton}>
+                                <TouchableOpacity style={styles.homeButton} onPress= {()=> {this.props.navigation.navigate('ScreenFindRestaurants')}}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/HomeButton/Group4163.png')}
@@ -159,7 +159,7 @@ export default class HomeScreen extends Component {
                                     </View>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.homeButton}>
+                                <TouchableOpacity style={styles.homeButton} onPress={()=> {this.props.navigation.navigate('ScreenFindTours')}}>
                                     <View style={{borderRadius:10,borderColor:'pink', borderWidth:1,justifyContent:'center', alignItems:'center', backgroundColor: 'white'}}>
                                         <Image
                                             source={require('../../Media/HomeButton/bus.png')}
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
         width: window.width/6, height: window.width/6
     },
     icButtonHome:{
-        width:30, height:30, margin:5
+        width:30, height:25, margin:5, alignSelf: 'center'
     },
     textButton:{
         color:'grey', fontSize:11

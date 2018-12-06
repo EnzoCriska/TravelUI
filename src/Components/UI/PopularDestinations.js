@@ -3,7 +3,7 @@ import {
     View, Text, ImageBackground, ScrollView, TouchableOpacity, FlatList
  } from "react-native";
  import  Icon  from "react-native-vector-icons/FontAwesome";
- import ItemDestinations from './FlatListItem/ItemDestinations.js'
+ import ItemDestinations from './FlatListItem/FlatListItemHomeScreen/ItemDestinations.js'
 
  const datasourceDestinations = [
     {
